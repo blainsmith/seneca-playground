@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "services": "npm run foo & npm run bar",
+    "foo": "node service-foo.js",
+    "bar": "node service-bar.js",
+    "client": "node client.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Blain Smith <rebelgeek@blainsmith.com> (http://blainsmith.com/)",
   "license": "ISC",
   "dependencies": {
-    "seneca": "^0.6.5"
+    "seneca": "^0.6.5",
+    "seneca-redis-transport": "^0.3.0"
   }
 }
