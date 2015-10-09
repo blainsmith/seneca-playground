@@ -6,6 +6,7 @@ seneca
 		console.log('BAR:', args);
 	})
 	.add({role: 'foo', cmd: 'create'}, function (args, done) {
+		console.log('FOO:', args);
 		done(null, {thing: args.thing});
 	})
 	.listen({type: 'rabbitmq'});
