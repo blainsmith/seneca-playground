@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "seneca": "^0.6.5",
+    "seneca-rabbitmq-transport": "^0.2.1",
     "seneca-redis-transport": "^0.3.0"
   }
 }

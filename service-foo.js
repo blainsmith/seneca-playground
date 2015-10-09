@@ -1,13 +1,12 @@
-require('seneca')()
-	.use('redis-transport')
-	.sub({role: 'bar'}, function (args, done) {
-	  console.log('Service Foo: So you like beer?');
-	})
+var seneca = require('seneca')();
+
+seneca
+	.use('rabbitmq-transport')
 	.add({role: 'foo', cmd: 'save'}, function (args, done) {
-		var thing = seneca.make('foo/thing');
-
-		thing = args.thing;
-
-		thing.save$(done);
+		done(null, {thing: args.thing});
 	})
-	.listen({type: 'redis'});
+	.listen({type: 'rabbitmq'});
+
+seneca
+	.client({type: 'rabbitmq'})
+	.sub({role: 'bar'}, console.log);
