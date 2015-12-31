@@ -9,13 +9,18 @@ seneca.add({cmd: 'no-response'}, function (args, done) {
 	}, timeout);
 });
 
-seneca.act({cmd: 'no-response', call: 1});
+seneca.act({cmd: 'no-response', call: 1}, function () {
+	// Prints 3rd
+	console.log('Prints immediately with no response.');
+});
 seneca.act({cmd: 'no-response', call: 2});
 seneca.act({cmd: 'no-response', call: 3});
 
+// Prints 1st
 console.log('Do some other things in the meantime.');
 
 seneca.act({cmd: 'no-response', call: 4});
 seneca.act({cmd: 'no-response', call: 5});
 
+// Prints 2nd
 console.log('Finally finish.');
